@@ -1,20 +1,28 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
 
-export default function App() {
+// IMPORT REACT
+import React from 'react';
+
+// IMPORT REDUX PROVIDER
+import { Provider } from 'react-redux';
+
+// IMPORT REDUX STORE
+import store from './src/redux_store';
+
+// IMPORT MOTHER COMPONENT
+import MotherComponent from './src/MotherComponent';
+
+// ENTRY POINT APP.JS
+const App = () => {
+
+  /* TODO implement logic */
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    /* REDUX PROVIDER */
+    <Provider store={store}>
+      <MotherComponent />
+    </Provider>
   );
+
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App

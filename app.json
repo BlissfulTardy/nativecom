@@ -25,6 +25,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "87ae2a2b-50be-4fb9-963c-84376b50174a"
+      }
+    },
+    "owner": "blissfultardy"
   }
 }
