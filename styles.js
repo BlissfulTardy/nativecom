@@ -1,8 +1,77 @@
 
-// IMPORT REACT-NATIVE STYLESHEET
+/**
+ * IMPORT React Native Stylesheet
+ * includes overall styling implementations of the application
+ */
 import { StyleSheet } from 'react-native';
 
-// INCLUDES THE OVERALL STYLESHEET COMPOSITION OF THE APPLICATION
+/**
+ * SECTION Standardized
+ * including generalized and repetitive
+ * styling aspects on an app-wide span
+ */
+
+/**
+ * STYLESHEET setup
+ * includes initial styling modifications
+ * adjusting the baseline behaviour of
+ * styling within the application scope
+ */
+const setup = StyleSheet.create({
+
+})
+
+/**
+ * STYLESHEET typography
+ * includes definitions for preset aspects
+ * purposed for quick styling of standardized
+ * component and element outlook features
+ * 
+ * atomic approach focusing on only
+ * single or few attributes at once
+ */
+const typography = StyleSheet.create({
+
+})
+
+/**
+ * STYLESHEET colorpalette
+ * includes definitions for preset colors
+ * and color groups representing palettes
+ */
+const colorpalette = StyleSheet.create({
+
+})
+
+/**
+ * STYLESHEET spatial
+ * includes dimensional and behavioural
+ * implementations as separate definitions
+ */
+const spatial = StyleSheet.create({
+  
+})
+
+/**
+ * STYLESHEET global
+ * includes styling aspects commonly
+ * utilized among different components
+ * 
+ * May include:
+ * Page Containers, Standardized Containers,
+ * Standardized Styles, Standardized Components
+ */
+const global = StyleSheet.create({
+
+})
+
+/**
+ * SECTION Specialized
+ * including individual implementations
+ * of specific styles and components
+ */
+
+/* OLD LAYOUT */
 
 /**
  * UTIL: intended for very basic, most primitive and universal
@@ -24,8 +93,6 @@ const pages = StyleSheet.create({
   },
   pageDefault: {
     flex: 1,
-    // TODO: revise default alingment behaviour if required later
-    alignItems: 'center',
   },
   pageCentered: {
     flex: 1,

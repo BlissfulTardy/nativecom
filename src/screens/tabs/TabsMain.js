@@ -34,11 +34,6 @@ const TabsMain = () => {
         /* PAGE */
         <View style={styles.pageTabs}>
 
-            {/* HEADER WITH APP LABEL */}
-            <View style={styles.headerDefault}>
-                <Text style={styles.labelHeaderDefault}>NativEcom</Text>
-            </View>
-
           {/* TAB NAVIGATION COMPOSITION */}
           <NavigationContainer>
 

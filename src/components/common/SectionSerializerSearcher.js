@@ -1,25 +1,11 @@
 
-/**
- * A common implementation for an arbitrary section intended to be
- * included within the flow of any application page layout which
- * should display a set of data instances with visual representations,
- * 
- * in addition to the labeled predecessor, this section is further
- * advanced in terms of component complexity, including a searchbar,
- * as well as the capability of performing search and filter operations
- * onto its handled dataset of items
- */
-
-// IMPORT REACT
-import React, { useState } from 'react';
-
-// IMPORT REACT NATIVE
+// IMPORT React
+import { useState } from 'react';
+// IMPORT React-Native
 import { View, Text, Modal, Pressable, TextInput, ScrollView } from 'react-native';
-
-// IMPORT STYLE
+// IMPORT Styles
 import styles from '../../../styles';
-
-// IMPORT COOMPONENTS
+// IMPORT Components
 import SectionSerializerLabeled from './SectionSerializerLabeled';
 
 const SectionSerializerSearcher = ({ title, data, containerStyle, renderItem, keyExtractor, horizontal = true, showsScrollIndicator = false, numColumns = 1 }) => {
@@ -42,16 +28,13 @@ const SectionSerializerSearcher = ({ title, data, containerStyle, renderItem, ke
   return (
     /* SECTION CONTAINER */
     <View style={styles.sectionDefault}>
-
       {/* SECTION TITLE */}
       <View>
-        { title &&
-          (
-            <View>
-              <Text style={styles.labelSectionDefault}>{title}</Text>
-            </View>
-          )
-        }
+        {title && (
+          <View>
+            <Text style={styles.labelSectionDefault}>{title}</Text>
+          </View>
+        )}
       </View>
 
       {/* SEARCHBAR */}
@@ -94,17 +77,18 @@ const SectionSerializerSearcher = ({ title, data, containerStyle, renderItem, ke
         </Modal>
       </View>
 
-    {/* NESTED SERIALIZER DISPLAYING FILTERED ITEMS */}
-      <SectionSerializerLabeled
-        data={data}
-        containerStyle={containerStyle}
-        renderItem={renderItem}
-        keyExtractor={keyExtractor}
-        horizontal={horizontal}
-        showsScrollIndicator={showsScrollIndicator}
-        numColumns={numColumns}
-      />
-
+      {/* SCROLLABLE CONTENT */}
+      <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
+        <SectionSerializerLabeled
+          data={data}
+          containerStyle={containerStyle}
+          renderItem={renderItem}
+          keyExtractor={keyExtractor}
+          horizontal={horizontal}
+          showsScrollIndicator={showsScrollIndicator}
+          numColumns={numColumns}
+        />
+      </ScrollView>
     </View>
   );
 };

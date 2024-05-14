@@ -2,9 +2,6 @@
 // IMPORT REACT
 import React from 'react';
 
-// IMPORT REACT NATIVE
-import { View, Text } from 'react-native';
-
 // IMPORT STYLES
 import styles from '../../../styles';
 

@@ -16,7 +16,7 @@ import SectionSerializerSearcher from '../../components/common/SectionSerializer
 import CardCartProduct from '../../components/CardCartProduct';
 
 // SCREEN COMPONENT
-const ScreenHomeSearch = () => {
+const ScreenMainSearch = () => {
 
   // PRODUCTS & CATEGORIES DATA
   const [products, setProducts] = useState([]);
@@ -63,4 +63,4 @@ const ScreenHomeSearch = () => {
   );
 };
 
-export default ScreenHomeSearch;
+export default ScreenMainSearch;

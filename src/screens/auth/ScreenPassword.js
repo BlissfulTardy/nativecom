@@ -1,26 +1,80 @@
-
-// IMPORT REACT
-import React from 'react';
-
-// IMPORT REACT NATIVE
-import { View, Text } from 'react-native';
-
-// IMPORT STYLES
+// IMPORT React
+import React, { useState } from 'react';
+// IMPORT React-Native
+import {
+    View,
+    Text,
+    TextInput,
+    Pressable,
+    Button,
+    Alert,
+    StyleSheet
+} from 'react-native';
+// IMPORT React-Navigation
+import { useNavigation } from '@react-navigation/native';
+// IMPORT Firebase Auth
+import { auth } from '../../services/Firebase'
+import { sendPasswordResetEmail } from 'firebase/auth';
+// IMPORT Styles
 import styles from '../../../styles';
 
-// SCREEN COMPONENT
+/**
+ * Password reset page of the application
+ * @returns 
+ */
 const ScreenPassword = () => {
+    // STATE to manage user credentials
+    const navigation = useNavigation();
+    const [email, setEmail] = useState('');
 
-  // TODO: implement component logic
+    // HANDLE Password reset
+    const handleResetPassword = async () => {
+        try {
+            await sendPasswordResetEmail(auth, email);
+            // Password reset email sent successfully
+            Alert.alert('Password Reset', 'Check your email for password reset instructions.');
+            // Navigate to ScreenLogin or wherever needed
+            navigation.navigate('ScreenLogin');
+        } catch (error) {
+            // Password reset failed, show error message
+            Alert.alert('Password Reset Failed', error.message);
+        }
+    };
 
-    // COMPONENT COMPOSITION
+    // PAGE COMPOSITION
     return (
-
-        // PAGE CONTAINER
+        // CONTAINER Page
         <View style={styles.pageDefault}>
 
-            <Text>TODO: implement this screen</Text>
-            
+            {/* LABEL Application */}
+            <Text style={styles.labelHeaderDefault}>NativEcom</Text>
+
+            {/* FORM Reset Password */}
+            <Text style={styles.labelTitleDefault}>Forgot Your Password?</Text>
+            <Text style={styles.labelSectionDefault}>Enter your email address below to reset your password.</Text>
+            <TextInput
+                style={styles.input}
+                placeholder="Email"
+                value={email}
+                onChangeText={setEmail}
+            />
+            <Button
+                title="Reset Password"
+                onPress={handleResetPassword}
+            />
+
+            {/* LINK Login */}
+            <Pressable onPress={() => navigation.navigate('ScreenLogin')}>
+                <Text style={styles.link}>Already have an account? Login</Text>
+            </Pressable>
+            <Text style={''}>if you already belong</Text>
+
+            {/* LINK Registration */}
+            <Pressable onPress={() => navigation.navigate('ScreenRegister')}>
+                <Text style={styles.link}>Register here and now</Text>
+            </Pressable>
+            <Text style={''}>if you're new here</Text>
+
         </View>
     );
 };

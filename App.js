@@ -1,27 +1,27 @@
 
-// IMPORT REACT
+// IMPORT React
 import React from 'react';
-
-// IMPORT REDUX PROVIDER
+// IMPORT React-Redux
 import { Provider } from 'react-redux';
-
-// IMPORT REDUX STORE
+// IMPORT Redux-Store
 import store from './src/redux_store';
+// IMPORT Firebase Auth
+import useAuth from './src/hooks/useAuth';
+// IMPORT Components
+import AppletMain from './src/screens/applets/AppletMain';
+import AppletAuth from './src/screens/applets/AppletAuth';
 
-// IMPORT MOTHER COMPONENT
-import MotherComponent from './src/MotherComponent';
-
-// ENTRY POINT APP.JS
+// COMPONENT App.js
 const App = () => {
 
-  /* TODO implement logic */
+  // HOOK Authentication User
+  const { currUser } = useAuth();
 
+  /* RENDERING App.js */
   return (
-    /* REDUX PROVIDER */
-    <Provider store={store}>
-      <MotherComponent />
-    </Provider>
-  );
+    <AppletMain/>
+    // currUser ? <AppletMain/> : <AppletAuth/>
+  )
 
 }
 
