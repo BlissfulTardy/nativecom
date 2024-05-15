@@ -1,77 +1,59 @@
 
-// IMPORT REACT
-import React, { useEffect, useState } from 'react';
-
-// IMPORT REACT NATIVE
-import { View, Text, ScrollView, FlatList, Pressable } from 'react-native';
-
-// IMPORT STYLES
-import styles from '../../../styles';
-
+// IMPORT React
+import React, { useEffect } from 'react';
+// IMPORT Native
+import { View, Text, FlatList, Pressable } from 'react-native';
+// IMPORT Redux
+import { useDispatch, useSelector } from 'react-redux';
 // IMPORT API
-import { fakeFetchProducts, fakeFetchCategories } from '../../api/fakeFetcher';
-
-// IMPORT COMPONENTS
-import SectionSerializerLabeled from '../../components/common/SectionSerializerLabeled';
+import { fetchProducts } from '../../utils/api';
+// IMPORT Action
+import { setProducts } from '../../redux_store/actions/productActions';
+// IMPORT Component
 import CardProduct from '../../components/CardProduct';
-import ButtonGridCategory from '../../components/ButtonGridCategory';
 
-// SCREEN COMPONENT
-const ScreenMainHome = () => {
+// IMPORT Style
+import styles, { screenMainHome } from '../../../styles';
 
-  // PRODUCTS & CATEGORIES DATA
-  const [products, setProducts] = useState([]);
-  const [categories, setCategories] = useState([]);
+// COMPONENT Home screen
+const ScreenMainHome = ({ navigation }) => {
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.products);
 
-  // USE EFFECT IMPLEMENTATION FOR DATA FETCH WITH API
   useEffect(() => {
-    // FETCH DATA
-    const fetchData = async () => {
-      // FETCH AND SET POPULAR PRODUCTS
-      const fetchedProducts = await (fakeFetchProducts(50));
-      setProducts(fetchedProducts)
-      // FETCH AND SET CATEGORIES
-      const fetchedCategories = await (fakeFetchCategories());
-      setCategories(fetchedCategories)
-    }
-    fetchData();
-  }, []);
+    const getProducts = async () => {
+      const data = await fetchProducts();
+      dispatch(setProducts(data));
+    };
+    getProducts();
+  }, [dispatch]);
 
-  // COMPONENT COMPOSITION
+  const categories = [...new Set(products.map(product => product.category))];
+
   return (
-
-    /* SCROLL VIEW */
-    <ScrollView
-    style={styles.containers.pageTabs}
-    showsVerticalScrollIndicator={false}
-    >
-      
-      {/* POPULAR ITEMS SLIDER SECTION */}
-      <SectionSerializerLabeled
-        title={'Popular'}
+    <View style={styles.container}>
+      <Text style={styles.title}>Popular Products</Text>
+      <FlatList
         data={products}
-        containerStyle={'containerSlider'}
-        renderItem={CardProduct}
-        keyExtractor={(item, index) => index.toString()}
-        horizontal={true}
+        horizontal
+        renderItem={({ item }) => <CardProduct product={item} />}
+        keyExtractor={(item) => item.id.toString()}
       />
-
-      {/* CATEGORIES GRID */}
-      <SectionSerializerLabeled
-        title={'Categories'}
+      <Text style={styles.title}>Categories</Text>
+      <FlatList
         data={categories}
-        containerStyle={'containerGrid'}
-        renderItem={ButtonGridCategory}
-        keyExtractor={(item, index) => index.toString()}
-        horizontal={false}
         numColumns={2}
+        renderItem={({ item }) => (
+          <Pressable
+            style={styles.category}
+            onPress={() => navigation.navigate('CategoryProducts', { category: item })}
+          >
+            <Text style={styles.categoryText}>{item}</Text>
+          </Pressable>
+        )}
+        keyExtractor={(item) => item}
       />
-
-      {/* Product recommendations (optional) */}
-      {/* Implementation based on user's purchase history */}
-
-    </ScrollView>
-
+    </View>
   );
 };
 

@@ -1,43 +1,35 @@
 
 // IMPORT React
 import React from 'react';
-// Import React-Native
-import { View, Text, Pressable } from 'react-native';
-// Import React Navigation
-import { useNavigation } from '@react-navigation/native';
-// Import Styles
-import styles from '../../../styles';
+// IMPORT Native
+import { View, Text, Button, StyleSheet } from 'react-native';
+// IMPORT Redux
+import { useSelector } from 'react-redux';
+// IMPORT Firebase
+import { auth } from '@react-native-firebase/auth';
 
+// IMPORT Style
+import styles, { screenMainProfile } from '../../../styles';
+
+// COMPONENT profile screen
 const ScreenMainProfile = () => {
-  
-  const navigation = useNavigation();
+  const user = useSelector((state) => state.auth.user);
 
+  // HANDLE logout
+  const handleLogout = async () => {
+    try {
+      await auth().signOut();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // RENDER
   return (
-    <View style={
-      [
-        styles.containers.pageTabs,
-        styles.containers.pageCentered,
-      ]
-    }>
-      <Text style={styles.typography.labelLoggedUser}>Logged in as: example@example.com</Text>
-
-      <View style={styles.procedurals.menuProfile}>
-        <Pressable onPress={() => navigation.navigate('ScreenUserinfo')} style={styles.procedurals.itemMenuProfile}>
-          <Text style={styles.procedurals.textItemMenuProfile}>User Information</Text>
-        </Pressable>
-
-        <Pressable onPress={() => navigation.navigate('ScreenDeliveryAddresses')} style={styles.procedurals.itemMenuProfile}>
-          <Text style={styles.procedurals.textItemMenuProfile}>Delivery Address</Text>
-        </Pressable>
-
-        <Pressable onPress={() => navigation.navigate('ScreenPaymentMethods')} style={styles.procedurals.itemMenuProfile}>
-          <Text style={styles.procedurals.textItemMenuProfile}>Payment Methods</Text>
-        </Pressable>
-
-        <Pressable onPress={() => navigation.navigate('ScreenReceipts')} style={styles.procedurals.itemMenuProfile}>
-          <Text style={styles.procedurals.textItemMenuProfile}>Receipts</Text>
-        </Pressable>
-      </View>
+    <View style={screenMainProfile.container}>
+      <Text style={screenMainProfile.title}>Profile</Text>
+      <Text style={screenMainProfile.email}>{user.email}</Text>
+      <Button title="Logout" onPress={handleLogout} />
     </View>
   );
 };

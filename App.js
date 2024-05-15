@@ -1,12 +1,14 @@
 
 // IMPORT React
-import React from 'react';
+import React, { useEffect, useState} from 'react';
 // IMPORT React-Redux
 import { Provider } from 'react-redux';
 // IMPORT Redux-Store
-import store from './src/redux_store';
+import store from './src/redux_store/store';
 // IMPORT Firebase Auth
-import useAuth from './src/hooks/useAuth';
+import auth from '@react-native-firebase/auth';
+// IMPORT Navigation
+import { NavigationContainer } from '@react-navigation/native';
 // IMPORT Stylesheet
 import EStyleSheet from 'react-native-extended-stylesheet';
 import styles from './styles';
@@ -49,15 +51,30 @@ EStyleSheet.build({
 // COMPONENT App.js
 const App = () => {
 
-  // HOOK Authentication User
-  const { currUser } = useAuth();
+  // STATE initilization & user inof
+  const [initializing, setInitializing] = useState(true);
+  const [user, setUser] = useState(null);
 
-  /* RENDERING App.js */
+  // HANDLE user state changes
+  const onAuthStateChanged = (user) => {
+    setUser(user);
+    if (initializing) setInitializing(false);
+  };
+
+  useEffect(() => {
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber; // unsubscribe on unmount
+  }, []);
+
+  if (initializing) return null;
+
   return (
-    <AppletMain/>
-    // currUser ? <AppletMain/> : <AppletAuth/>
-  )
-
-}
+    <Provider store={store}>
+      <NavigationContainer>
+        {user ? <MainTabNavigator /> : <AuthStackNavigator />}
+      </NavigationContainer>
+    </Provider>
+  );
+};
 
 export default App

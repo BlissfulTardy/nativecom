@@ -47,34 +47,6 @@ const setup = EStyleSheet.create({
  */
 const typography = EStyleSheet.create({
 
-  labelHeaderDefault: {
-    color: '#fff', // TODO: adjust color
-    fontSize: 26,
-    fontWeight: 'bold',
-  },
-
-  // DEFAULT CONTAINER/SECTION LABEL
-  labelSectionDefault: {
-    paddingVertical: 20, // Temporary
-    color: '$colorAppPrimary', // TODO: adjust color
-    fontSize: 32,
-    fontWeight: 'bold',
-    alignSelf: 'center',
-  },
-
-  labelTitleDefault: {
-    fontSize: 26,
-    fontWeight: 'bold',
-    color: '$colorAppPrimary',
-    textAlign: 'center',
-  },
-
-  labelLoggedUser: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginBottom: 20,
-  },
-
 })
 
 /**
@@ -100,27 +72,6 @@ const visuals = EStyleSheet.create({
  */
 const clickables = EStyleSheet.create({
 
-  // Buttons of ScreenMainCart actions
-  buttonClearCart: {
-    width: '40%',
-    backgroundColor: '#dc3545', // red
-    paddingVertical: 12,
-    paddingHorizontal: 20,
-    borderRadius: 8,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-
-  buttonCheckoutCart: {
-    width: '40%',
-    backgroundColor: '$colorAppPrimary', // blue
-    paddingVertical: 12,
-    paddingHorizontal: 20,
-    borderRadius: 8,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  
 })
 
 /**
@@ -129,18 +80,6 @@ const clickables = EStyleSheet.create({
  * implementations as separate definitions
  */
 const spatial = EStyleSheet.create({
-
-  gapVertical10: {
-    paddingTop: 10,
-  },
-  
-  gapVeertical15: {
-    paddingTop: 15,
-  },
-
-  paddingDefault: {
-    padding: 20,
-  },
 
 })
 
@@ -155,76 +94,6 @@ const spatial = EStyleSheet.create({
  */
 const containers = EStyleSheet.create({
 
-  // OVERLAY CONTAINERS (headers, footers, tabbars etc.)
-
-  headerDefault: {
-    height: '$heightAppHeader',
-    backgroundColor: '$colorAppPrimary', // TODO: adjust color
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-
-  footerDefault: {
-    /* TODO: emptied this as not functioning intendedly */
-  },
-
-  // PAGE CONTAINERS
-
-  pageTabs: {
-    flex: 1,
-    //padding: '$paddingPageDefault'
-  },
-
-  pageDefault: {
-    flex: 1,
-    //padding: '$paddingPageDefault'
-  },
-
-  pageCentered: {
-    flex: 1,
-    // TODO: revise default alingment behaviour if required later
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-
-  // STANDARDIZED CONTAINERS
-
-  /**
-   * TODO: removing this implementation to migrate such
-   * implementations directly to the typography section
-   */
-  containerTitleDefault: {
-    padding: 10
-  },
-
-  sectionDefault: {
-    flex: 1,
-    paddingHorizontal: 0,
-    // paddingVertical: 20,
-  },
-
-  containerScroller: {
-    justifyContent: 'center',
-    display: 'grid',
-    gap: '20px',
-    flex: 1,
-    padding: '0 20px'
-  },
-
-  containerSlider: {
-    flex: 1,
-    paddingHorizontal: -10,
-    // paddingVertical: 10,
-  },
-
-  containerGrid: {
-    flex: 1,
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-  },
-
-  // TODO either migrate or integrate special containers
-
 })
 
 /**
@@ -238,25 +107,7 @@ const containers = EStyleSheet.create({
  * solely dedicated to related containment behaviour
  */
 const procedurals = EStyleSheet.create({
-    // ScreenMainProfile Menu
-    menuProfile: {
-      width: '80%',
-      alignItems: 'center',
-    },
-    itemMenuProfile: {
-      width: '100%',
-      paddingVertical: 15,
-      paddingHorizontal: 15,
-      marginVertical: '2.5%',
-      backgroundColor: '$colorAppPrimary',
-      borderRadius: 5,
-    },
-    textItemMenuProfile: {
-      fontSize: 16,
-      fontWeight: 'bold',
-      color: '#ffffff',
-      textAlign: 'center',
-    },
+
 })
 
 /**
@@ -307,7 +158,7 @@ export default styles;
 /**
  * /////////////////////////////////////////////////////////////////////////////
  * /////////////////////////////////////////////////////////////////////////////
- * SECTION [3] Specialized Stylesheets
+ * SECTION [3] Specific Stylesheets
  * including individual styling implementations
  * of distinct pages and/or components, to be
  * composed and exported as standalone instances,
@@ -317,224 +168,245 @@ export default styles;
  * exported during their declaration
  */
 
-/**
- * SUBSECTION Pages
- */
-
-/**
- * SUBSECTION Components
- */
-
-export const screenMainCartFoot = EStyleSheet.create({
-
-  containerBottomScreenMainCart: {
-    flexDirection: 'column',
+export const cardProduct = EStyleSheet.create({
+  card: {
+    flex: 1,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 5,
+    margin: 5,
+    padding: 10,
+    alignItems: 'center',
+  },
+  image: {
+    width: 100,
+    height: 100,
+    resizeMode: 'contain',
+  },
+  title: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginVertical: 5,
+  },
+  category: {
+    fontSize: 14,
+    color: '#888',
+  },
+  price: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginVertical: 5,
+  },
+  quantityHandler: {
+    flexDirection: 'row',
     alignItems: 'center',
     marginTop: 10,
+  },
+});
+
+export const screenMainHome = EStyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 10,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginVertical: 10,
+    textAlign: 'center',
+  },
+  category: {
+    flex: 1,
+    margin: 5,
+    padding: 20,
+    backgroundColor: '#f8f8f8',
+    borderRadius: 10,
+    alignItems: 'center',
+  },
+  categoryText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+});
+
+export const screenMainSearch = EStyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 10,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginVertical: 10,
+    textAlign: 'center',
+  },
+  searchContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginVertical: 10,
+  },
+  searchInput: {
+    flex: 1,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 5,
+    padding: 10,
+    marginRight: 10,
+  },
+  resultsContainer: {
+    paddingBottom: 10,
+  },
+});
+
+export const screenMainCart = EStyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 10,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginVertical: 10,
+    textAlign: 'center',
+  },
+  cartSummary: {
+    padding: 10,
+    borderTopWidth: 1,
+    borderColor: '#ccc',
+    alignItems: 'center',
+  },
+  totalCost: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginVertical: 10,
+  },
+});
+
+export const screenMainProfiles = EStyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 10,
+  },
+  email: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginVertical: 10,
+    textAlign: 'center',
+  },
+});
+
+export const screenAuthLogin = EStyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    padding: 20,
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 5,
+    padding: 10,
+    marginVertical: 10,
+  },
+  errorText: {
+    color: 'red',
     marginBottom: 10,
   },
+});
 
-  priceContaineBottomScreenMainCart: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-
-  buttonsContainerBottomScreenMainCart: {
-    width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-  },
-
-})
-
-export const sectionSerializerSearcher = EStyleSheet.create({
-
-  componentSerializerSearcher: {
-    padding: '10px',
-  },
-
-  searchbarSerializerSearcher: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#f0f0f0',
-    borderRadius: 10,
-    height: 50,
-    marginHorizontal: '10%',
-    marginBottom: '10px',
-  },
-
-  inputSearchbarSerializerSearcher: {
-    flex: 1,
-    width: '100%',
-    height: '100%',
-    fontSize: 16,
-    color: '#333',
-    borderRadius: 10,
-    paddingLeft: 10,
-  },
-
-  containerSerializerSearcherButtonsSearchbar: {
-    width: '75%',
-    alignSelf: 'center',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-
-  buttonFilter: {
-    width: '30%',
-    backgroundColor: 'darkorange',
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-    borderRadius: 8,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-
-  buttonClear: {
-    width: '30%',
-    backgroundColor: 'red',
-    paddingVertical: 12,
-    paddingHorizontal: 20,
-    borderRadius: 8,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-
-  buttonSearch: {
-    width: '30%',
-    backgroundColor: 'darkblue',
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-    borderRadius: 8,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-
-  containerModal: {
+export const screenAuthRegister = EStyleSheet.create({
+  container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    padding: 20,
   },
-
-  buttonCloseModal: {
-
-  },
-
-})
-
-export const buttonGridCategory = EStyleSheet.create({
-  buttonGridCategory: {
-    flex: 1,
-    aspectRatio: 1.5,
-    height: '80px',
+  input: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 5,
     padding: 10,
-    margin: 5,
-    borderRadius: 10,
-    backgroundColor: '$colorAppPrimary',
-    alignItems: 'center',
-    justifyContent: 'center',
+    marginVertical: 10,
   },
-  labelbuttonGridCategory: {
-    fontSize: 20,
-    color: 'white',
-    textAlign: 'center',
-  },
-})
+});
 
-export const cardProduct = EStyleSheet.create({
-
-  cardProduct: {
-    backgroundColor: '#fff',
-    borderRadius: '10px',
-    borderWidth: '1px',
-    borderColor: '#ddd',
-    padding: '10px',
-    margin: '5px',
-    width: '45vw',
-  },
-
-  nameCardProduct: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginTop: 5,
-  },
-
-  descriptionCardProduct: {
-    fontSize: 14,
-    marginTop: 5,
-  },
-
-  categoryCardProduct: {
-    fontSize: 14,
-    marginTop: 5,
-    color: '#666',
-  },
-
-  priceCardProduct: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginTop: 5,
-  },
-
-  imageCardProduct: {
-    width: '100%',
-    height: 150,
-    resizeMode: 'cover',
-    borderRadius: 10,
-  },
-})
-
-export const itemCartCount = EStyleSheet.create({
-
-  containerItemCartCount: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    alignSelf: 'center',
-    paddingTop: 10,
-  },
-
-  textItemCartCount: {
-    backgroundColor: '#333',
-    paddingHorizontal: 15,
-    paddingVertical: 5,
-    borderRadius: 5,
-    marginHorizontal: 5,
-    fontSize: 16,
-    aspectRatio: 1,
-  },
-
-  buttonItemCartCount: {
-    height: 30,
-    backgroundColor: '$colorAppPrimary',
-    paddingHorizontal: 15,
-    paddingVertical: 5,
-    borderRadius: 5,
-    marginHorizontal: 5,
-    aspectRatio: 1,
-    color: '#ddd',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-
-  iconButtonItemCartCount: {
-
-  },
-
-  displayItemCartCount: {
+export const screenAuthPassword = EStyleSheet.create({
+  container: {
     flex: 1,
-    minHeight: 30,
-    minWidth: 40,
-    display: 'flex',
-    backgroundColor: '#EEE',
-    alignItems: 'center',
     justifyContent: 'center',
+    padding: 20,
   },
+  input: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 5,
+    padding: 10,
+    marginVertical: 10,
+  },
+});
 
-  textDisplayItemCartCount: {
-    color: '#FFF',
+/*
+export const screenAuthProcess = EStyleSheet.create({
+  
+});
+*/
+
+export const screenCategoryProducts = EStyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 10,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginVertical: 10,
     textAlign: 'center',
-    fontSize: 46,
   },
-
 })
+
+export const filterModal = EStyleSheet.create({
+  modalView: {
+    margin: 20,
+    backgroundColor: 'white',
+    borderRadius: 10,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: 'center',
+  },
+  filterOption: {
+    padding: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: '#ccc',
+    width: '100%',
+    alignItems: 'center',
+  },
+})
+
+export const screenMainProfile = EStyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    padding: 20,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginVertical: 10,
+    textAlign: 'center',
+  },
+  email: {
+    fontSize: 18,
+    marginVertical: 10,
+    textAlign: 'center',
+  },
+});

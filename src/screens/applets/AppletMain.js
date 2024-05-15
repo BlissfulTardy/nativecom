@@ -2,11 +2,11 @@
 // IMPORT React
 import React, { useEffect, useState } from 'react';
 // IMPORT React-Redux
-import { Provider, useSelector, useDispatch } from 'react-redux';
+import { Provider } from 'react-redux';
 // IMPORT React-Native
 import { View } from 'react-native';
 // IMPORT Store
-import store from '../../redux_store';
+import store from '../../redux_store/store';
 // IMPORT Navigation
 import NavigatorMain from '../../navigation/NavigatorMain';
 // IMPORT Styles

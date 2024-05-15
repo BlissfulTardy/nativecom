@@ -1,47 +1,53 @@
 
-// IMPORT REACT
+// IMPORT React
 import React from 'react';
+// IMPORT Native
+import { View, Text, Image, Button, } from 'react-native';
+// IMPORT Redux
+import { useDispatch, useSelector } from 'react-redux';
+// IMPORT Actions
+import { addToCart, removeFromCart, incrementQuantity, decrementQuantity } from '../redux_store/actions/cartActions.js';
 
-//IMPORT REACT NATIVE
-import { View, Text, Image, Pressable } from 'react-native';
+// IMPORT Style
+import styles, { cardProduct } from '../../styles.js'
 
-// IMPORT STYLES
-import styles from '../../styles';
-import { cardProduct } from './../../styles';
+// COMPONENT Card for displaying any product
+const CardProduct = ({ product }) => {
 
-// IMPORT IONICONS
-import Icon from 'react-native-vector-icons/FontAwesome'
+  // DISPATCH action
+  const dispatch = useDispatch();
+  // SELECT card
+  const cart = useSelector((state) => state.cart);
+  // CURRENT card
+  const cartItem = cart.find((item) => item.id === product.id);
 
-// IMPORT COMPONENT
-import CartItemQuantityHandler from './CartItemQuantityHandler';
+  // HANDLE cart transactions
+  const handleAddToCart = () => { dispatch(addToCart(product)); };
+  const handleRemoveFromCart = () => { dispatch(removeFromCart(product.id)); };
+  const handleIncrement = () => { dispatch(incrementQuantity(product.id)); };
+  const handleDecrement = () => { dispatch(decrementQuantity(product.id)); };
 
-// COMPONENT RENDER FUNCTION
-const CardProduct = ({ item, onPress, onIncrease, onDecrease }) => {
+  // RENDER
   return (
-    // HANDLES HANDLING APPROPRIATE ONPRESS HANDLER AS A FUNCTION PARAMETER
-    <Pressable onPress={onPress} style={cardProduct.cardProduct}>
-      {/* PRODUCT IMAGE */}
-      <Image source={{ uri: item.image }} style={cardProduct.imageCardProduct} />
-      {/* PRODUCT NAME */}
-      <Text style={cardProduct.nameCardProduct} numberOfLines={2} ellipsizeMode="tail">
-        {item.title}
-      </Text>
-      {/* PRODUCT DESCRIPTION */}
-      <Text style={cardProduct.descriptionCardProduct} numberOfLines={3} ellipsizeMode="tail">
-        {item.description}
-      </Text>
-      {/* PRODUCT CATEGORY */}
-      <Text style={cardProduct.categoryCardProduct}>
-        {item.category}
-      </Text>
-      {/* PRODUCT PRICE */}
-      <Text style={cardProduct.priceCardProduct}>${item.price}</Text>
-      {/* CART ITEM QUANTITY HANDLER */}
-      <CartItemQuantityHandler
-        item={item}
-      />
-    </Pressable>
+    <View style={styles.card}>
+      <Image source={{ uri: product.image }} style={styles.image} />
+      <Text style={styles.title}>{product.title}</Text>
+      <Text style={styles.category}>{product.category}</Text>
+      <Text style={styles.price}>${product.price}</Text>
+      <View style={styles.quantityHandler}>
+        {cartItem ? (
+          <>
+            <Button title="-" color="red" onPress={handleDecrement} />
+            <Text>{cartItem.quantity}</Text>
+            <Button title="+" color="blue" onPress={handleIncrement} />
+          </>
+        ) : (
+          <Button title="Add" color="green" onPress={handleAddToCart} />
+        )}
+      </View>
+    </View>
   );
+
 };
 
 export default CardProduct;

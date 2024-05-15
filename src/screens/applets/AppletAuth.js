@@ -6,7 +6,7 @@ import { Provider, useSelector, useDispatch } from 'react-redux';
 // IMPORT React-Navigation
 import { NavigationContainer } from '@react-navigation/native';
 // IMPORT Store
-import store from '../../redux_store';
+import store from '../../redux_store/store';
 // IMPORT Navigation
 import NavigatorAuth from '../../navigation/NavigatorAuth';
 

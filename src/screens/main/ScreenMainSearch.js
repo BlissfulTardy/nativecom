@@ -1,64 +1,86 @@
 
-// IMPORT REACT
-import React, { useEffect, useState } from 'react';
-
-// IMPORT REACT NATIVE
-import { View, Text, ScrollView, FlatList, Pressable } from 'react-native';
-
-// IMPORT STYLES
-import styles from '../../../styles';
-
+// IMPORT React
+import React, { useState, useEffect } from 'react';
+// IMPORT Native
+import { View, Text, TextInput, Button, FlatList } from 'react-native';
+// IMPORT Redux
+import { useDispatch, useSelector} from 'react-redux';
 // IMPORT API
-import { fakeFetchProducts, fakeFetchCategories } from '../../api/fakeFetcher';
-
-// IMPORT COMPONENTS
-import SectionSerializerSearcher from '../../components/common/SectionSerializerSearcher';
+import { fetchProducts } from '../../utils/api';
+//IMPRT Actions
+import { setProducts } from '../../redux_store/actions/productActions';
+// IMPORT Components
 import CardProduct from '../../components/CardProduct';
+import FilterModal from '../../components/FilterModal';
 
-// SCREEN COMPONENT
+// IMPORT Style
+import styles, { screenMainSearch } from '../../../styles';
+
+// COMPONENT Search screen
 const ScreenMainSearch = () => {
 
-  // PRODUCTS & CATEGORIES DATA
-  const [products, setProducts] = useState([]);
-  const [categories, setCategories] = useState([]);
+  // STATE Search quest and filtered results
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredResults, setFilteredResults] = useState([]);
 
-  /**
-   * TODO: set this as a clone of the initially fetched products
-   * as im planning to utilize this for the filter operations
-   */
-  const [filtered, setFiltered] = useState([]);
+  // STATE filter category and modal flag
+  const [isModalVisible, setModalVisible] = useState(false);
+  const [filterCategory, setFilterCategory] = useState('');
 
-  // USE EFFECT IMPLEMENTATION FOR DATA FETCH WITH API
+  // DISPATCH actions
+  const dispatch = useDispatch();
+  // SELECT products
+  const products = useSelector((state) => state.products);
+
+  // COLLECT data
   useEffect(() => {
-    // FETCH DATA
-    const fetchData = async () => {
-      // FETCH AND SET ALL PRODUCTS
-      const fetchedProducts = await (fakeFetchProducts());
-      setProducts(fetchedProducts)
-      // FETCH AND SET CATEGORIES
-      const fetchedCategories = await (fakeFetchCategories());
-      setCategories(fetchedCategories)
+    const getProducts = async () => {
+      const data = await fetchProducts();
+      dispatch(setProducts(data));
+    };
+    getProducts();
+  }, [dispatch]);
+
+  // UPDATE results per iterations on search query
+  useEffect(() => {
+    let results = products;
+    if (searchQuery) {
+      results = results.filter(product =>
+        product.title.toLowerCase().includes(searchQuery.toLowerCase())
+      );
     }
-    fetchData();
-  }, []);
+    if (filterCategory) {
+      results = results.filter(product => product.category === filterCategory);
+    }
+    setFilteredResults(results);
+  }, [searchQuery, filterCategory, products]);
 
-  // COMPONENT COMPOSITION
+  // RENDER
   return (
-    /* PAGE CONTAINER */
-    <View style={styles.containers.pageTabs}>
-
-    {/* SEARCHER SECTION COMPONENT */}
-      <SectionSerializerSearcher
-        title="Search Products"
-        data={products}
-        containerStyle={'containerScroller'}
-        renderItem={CardProduct}
-        keyExtractor={(item) => item.id.toString()}
-        horizontal={false}
-        showsScrollIndicator={false}
-        numColumns={2}
+    <View style={styles.container}>
+      <Text style={styles.title}>Search Products</Text>
+      <View style={styles.searchContainer}>
+        <TextInput
+          style={styles.searchInput}
+          placeholder="Search..."
+          value={searchQuery}
+          onChangeText={setSearchQuery}
+        />
+        <Button title="Clear" onPress={() => setSearchQuery('')} />
+        <Button title="Filter" onPress={() => setModalVisible(true)} />
+      </View>
+      <FilterModal
+        visible={isModalVisible}
+        onClose={() => setModalVisible(false)}
+        onApply={(category) => setFilterCategory(category)}
       />
-
+      <FlatList
+        data={filteredResults}
+        numColumns={2}
+        renderItem={({ item }) => <CardProduct product={item} />}
+        keyExtractor={(item) => item.id.toString()}
+        contentContainerStyle={styles.resultsContainer}
+      />
     </View>
   );
 };
