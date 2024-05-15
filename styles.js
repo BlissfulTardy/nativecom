@@ -484,3 +484,57 @@ export const cardProduct = EStyleSheet.create({
     borderRadius: 10,
   },
 })
+
+export const itemCartCount = EStyleSheet.create({
+
+  containerItemCartCount: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignSelf: 'center',
+    paddingTop: 10,
+  },
+
+  textItemCartCount: {
+    backgroundColor: '#333',
+    paddingHorizontal: 15,
+    paddingVertical: 5,
+    borderRadius: 5,
+    marginHorizontal: 5,
+    fontSize: 16,
+    aspectRatio: 1,
+  },
+
+  buttonItemCartCount: {
+    height: 30,
+    backgroundColor: '$colorAppPrimary',
+    paddingHorizontal: 15,
+    paddingVertical: 5,
+    borderRadius: 5,
+    marginHorizontal: 5,
+    aspectRatio: 1,
+    color: '#ddd',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  iconButtonItemCartCount: {
+
+  },
+
+  displayItemCartCount: {
+    flex: 1,
+    minHeight: 30,
+    minWidth: 40,
+    display: 'flex',
+    backgroundColor: '#EEE',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  textDisplayItemCartCount: {
+    color: '#FFF',
+    textAlign: 'center',
+    fontSize: 46,
+  },
+
+})

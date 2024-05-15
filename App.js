@@ -26,7 +26,7 @@ import AppletAuth from './src/screens/applets/AppletAuth';
 
 EStyleSheet.build({
   // TODO REMOVE TEST
-  $outline: 1,
+  //$outline: 1,
   // TODO REMOVE TEST
   /* [1] GLOBAL VARIABLES */
   /* [1.0] Universal Variables */

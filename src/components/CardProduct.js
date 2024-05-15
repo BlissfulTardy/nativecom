@@ -12,6 +12,9 @@ import { cardProduct } from './../../styles';
 // IMPORT IONICONS
 import Icon from 'react-native-vector-icons/FontAwesome'
 
+// IMPORT COMPONENT
+import CartItemQuantityHandler from './CartItemQuantityHandler';
+
 // COMPONENT RENDER FUNCTION
 const CardProduct = ({ item, onPress, onIncrease, onDecrease }) => {
   return (
@@ -33,6 +36,10 @@ const CardProduct = ({ item, onPress, onIncrease, onDecrease }) => {
       </Text>
       {/* PRODUCT PRICE */}
       <Text style={cardProduct.priceCardProduct}>${item.price}</Text>
+      {/* CART ITEM QUANTITY HANDLER */}
+      <CartItemQuantityHandler
+        item={item}
+      />
     </Pressable>
   );
 };
