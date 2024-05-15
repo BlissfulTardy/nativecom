@@ -13,7 +13,7 @@ import { fakeFetchProducts, fakeFetchCategories } from '../../api/fakeFetcher';
 
 // IMPORT COMPONENTS
 import SectionSerializerLabeled from '../../components/common/SectionSerializerLabeled';
-import CardSliderProduct from '../../components/CardSliderProduct';
+import CardProduct from '../../components/CardProduct';
 import ButtonGridCategory from '../../components/ButtonGridCategory';
 
 // SCREEN COMPONENT
@@ -51,7 +51,7 @@ const ScreenMainHome = () => {
         title={'Popular'}
         data={products}
         containerStyle={'containerSlider'}
-        renderItem={CardSliderProduct}
+        renderItem={CardProduct}
         keyExtractor={(item, index) => index.toString()}
         horizontal={true}
       />

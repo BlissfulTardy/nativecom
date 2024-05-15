@@ -8,12 +8,13 @@ import { Pressable, Text } from 'react-native';
 // IMPORT STYLES
 import styles from '../../styles';
 import EStyleSheet from 'react-native-extended-stylesheet';
+import { buttonGridCategory } from '../../styles';
 
 const ButtonGridCategory = ({ item, onPress }) => {
   return (
     <Pressable
       style={({ pressed }) => [
-        styles.clickables.buttonGridCategory,
+        buttonGridCategory.buttonGridCategory,
         { 
           backgroundColor: pressed
           ? '#000277'
@@ -23,7 +24,7 @@ const ButtonGridCategory = ({ item, onPress }) => {
       onPress={() => onPress(item)}
     >
       {/* Display category name */}
-      <Text style={styles.typography.labelbuttonGridCategory}>{item}</Text>
+      <Text style={buttonGridCategory.labelbuttonGridCategory}>{item}</Text>
     </Pressable>
   );
 };

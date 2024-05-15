@@ -13,7 +13,7 @@ import { fakeFetchProducts, fakeFetchCategories } from '../../api/fakeFetcher';
 
 // IMPORT COMPONENTS
 import SectionSerializerSearcher from '../../components/common/SectionSerializerSearcher';
-import CardCartProduct from '../../components/CardProduct';
+import CardProduct from '../../components/CardProduct';
 
 // SCREEN COMPONENT
 const ScreenMainSearch = () => {
@@ -52,11 +52,11 @@ const ScreenMainSearch = () => {
         title="Search Products"
         data={products}
         containerStyle={'containerScroller'}
-        renderItem={CardCartProduct}
+        renderItem={CardProduct}
         keyExtractor={(item) => item.id.toString()}
         horizontal={false}
         showsScrollIndicator={false}
-        numColumns={1}
+        numColumns={2}
       />
 
     </View>

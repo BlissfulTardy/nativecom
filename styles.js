@@ -69,56 +69,10 @@ const typography = EStyleSheet.create({
     textAlign: 'center',
   },
 
-  labelbuttonGridCategory: {
-    fontSize: 20,
-    color: 'white',
-    textAlign: 'center',
-  },
-
   labelLoggedUser: {
     fontSize: 16,
     fontWeight: 'bold',
     marginBottom: 20,
-  },
-
-  nameCardSliderProduct: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#EEE'
-  },
-
-  categoryCardSliderProduct: {
-    fontSize: 14,
-    fontWeight: 'bold',
-    color: '#BBB'
-  },
-
-  priceCardSliderProduct: {
-    fontSize: 12,
-    color: '#888',
-  },
-
-  nameCartProduct: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginTop: 5,
-  },
-
-  descriptionCartProduct: {
-    fontSize: 14,
-    marginTop: 5,
-  },
-
-  categoryCartProduct: {
-    fontSize: 14,
-    marginTop: 5,
-    color: '#666',
-  },
-
-  priceCartProduct: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginTop: 5,
   },
 
 })
@@ -138,21 +92,6 @@ const colorpalette = EStyleSheet.create({
  */
 const visuals = EStyleSheet.create({
 
-  imageCardSliderProduct: {
-    width: '100%',
-    height: 150, // TODO: adjust if needed
-    resizeMode: 'cover', // fill entire space without distortion
-    marginBottom: 10,
-    borderRadius: 5,
-  },
-
-  imageCartProduct: {
-    width: '100%',
-    height: 150,
-    resizeMode: 'cover',
-    borderRadius: 10,
-  },
-
 })
 
 /**
@@ -160,17 +99,6 @@ const visuals = EStyleSheet.create({
  * includes button, presseables, and other clickables
  */
 const clickables = EStyleSheet.create({
-
-  buttonGridCategory: {
-    flex: 1,
-    aspectRatio: 1.5,
-    padding: 10,
-    margin: 5,
-    borderRadius: 10,
-    backgroundColor: '$colorAppPrimary',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
 
   // Buttons of ScreenMainCart actions
   buttonClearCart: {
@@ -276,8 +204,8 @@ const containers = EStyleSheet.create({
   },
 
   containerScroller: {
+    justifyContent: 'center',
     display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
     gap: '20px',
     flex: 1,
     padding: '0 20px'
@@ -296,27 +224,6 @@ const containers = EStyleSheet.create({
   },
 
   // TODO either migrate or integrate special containers
-
-  cardSliderProduct: {
-    backgroundColor: '#fff', // TODO change color
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: '#ddd',
-    padding: 10,
-    margin: 10,
-    width: 150, // TODO adjust if needed / feasible
-  },
-
-  CardProduct: {
-    backgroundColor: '#fff',
-    borderRadius: '10px',
-    borderWidth: '1px',
-    borderColor: '#ddd',
-    padding: '10px',
-    margin: '10px 0',
-    // calculate width for 2 items per row
-    width: 'calc(50% - 10px)',
-  },
 
 })
 
@@ -514,4 +421,66 @@ export const sectionSerializerSearcher = EStyleSheet.create({
 
   },
 
+})
+
+export const buttonGridCategory = EStyleSheet.create({
+  buttonGridCategory: {
+    flex: 1,
+    aspectRatio: 1.5,
+    height: '80px',
+    padding: 10,
+    margin: 5,
+    borderRadius: 10,
+    backgroundColor: '$colorAppPrimary',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  labelbuttonGridCategory: {
+    fontSize: 20,
+    color: 'white',
+    textAlign: 'center',
+  },
+})
+
+export const cardProduct = EStyleSheet.create({
+
+  cardProduct: {
+    backgroundColor: '#fff',
+    borderRadius: '10px',
+    borderWidth: '1px',
+    borderColor: '#ddd',
+    padding: '10px',
+    margin: '5px',
+    width: '45vw',
+  },
+
+  nameCardProduct: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginTop: 5,
+  },
+
+  descriptionCardProduct: {
+    fontSize: 14,
+    marginTop: 5,
+  },
+
+  categoryCardProduct: {
+    fontSize: 14,
+    marginTop: 5,
+    color: '#666',
+  },
+
+  priceCardProduct: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginTop: 5,
+  },
+
+  imageCardProduct: {
+    width: '100%',
+    height: 150,
+    resizeMode: 'cover',
+    borderRadius: 10,
+  },
 })

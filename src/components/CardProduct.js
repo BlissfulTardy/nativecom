@@ -7,6 +7,7 @@ import { View, Text, Image, Pressable } from 'react-native';
 
 // IMPORT STYLES
 import styles from '../../styles';
+import { cardProduct } from './../../styles';
 
 // IMPORT IONICONS
 import Icon from 'react-native-vector-icons/FontAwesome'
@@ -15,23 +16,23 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 const CardProduct = ({ item, onPress, onIncrease, onDecrease }) => {
   return (
     // HANDLES HANDLING APPROPRIATE ONPRESS HANDLER AS A FUNCTION PARAMETER
-    <Pressable onPress={onPress} style={styles.containers.CardProduct}>
+    <Pressable onPress={onPress} style={cardProduct.cardProduct}>
       {/* PRODUCT IMAGE */}
-      <Image source={{ uri: item.image }} style={styles.visuals.imageCartProduct} />
+      <Image source={{ uri: item.image }} style={cardProduct.imageCardProduct} />
       {/* PRODUCT NAME */}
-      <Text style={styles.typography.nameCartProduct} numberOfLines={2} ellipsizeMode="tail">
+      <Text style={cardProduct.nameCardProduct} numberOfLines={2} ellipsizeMode="tail">
         {item.title}
       </Text>
       {/* PRODUCT DESCRIPTION */}
-      <Text style={styles.typography.descriptionCartProduct} numberOfLines={3} ellipsizeMode="tail">
+      <Text style={cardProduct.descriptionCardProduct} numberOfLines={3} ellipsizeMode="tail">
         {item.description}
       </Text>
       {/* PRODUCT CATEGORY */}
-      <Text style={styles.typography.categoryCartProduct}>
+      <Text style={cardProduct.categoryCardProduct}>
         {item.category}
       </Text>
       {/* PRODUCT PRICE */}
-      <Text style={styles.typography.priceCartProduct}>${item.price}</Text>
+      <Text style={cardProduct.priceCardProduct}>${item.price}</Text>
     </Pressable>
   );
 };
