@@ -1,12 +1,17 @@
 
 // IMPORT React
 import React from 'react';
+// IMPORT React-Native
+import { View } from 'react-native';
 // IMPORT React-Navigation
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 // IMPORT Icon
 import Icon from 'react-native-vector-icons/FontAwesome';
+// IMPORT Styles
+import styles from '../../styles';
+import EStyleSheet from 'react-native-extended-stylesheet';
 
 // IMPORT Main Screens
 import ScreenMainHome from '../screens/main/ScreenMainHome';
@@ -119,6 +124,7 @@ const NavigatorMain = () => {
           },
           tabBarActiveTintColor: '#007bff',
           tabBarInactiveTintColor: '#bbb',
+          tabBarStyle: { height: EStyleSheet.value('$heightAppTabBar') }
         })}
       >
         <Tab.Screen name="Home" component={StackHome} />

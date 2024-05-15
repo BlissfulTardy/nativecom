@@ -13,7 +13,7 @@ import { fakeFetchProducts, fakeFetchCategories } from '../../api/fakeFetcher';
 
 // IMPORT COMPONENTS
 import SectionSerializerSearcher from '../../components/common/SectionSerializerSearcher';
-import CardCartProduct from '../../components/CardCartProduct';
+import CardCartProduct from '../../components/CardProduct';
 
 // SCREEN COMPONENT
 const ScreenMainSearch = () => {
@@ -45,7 +45,7 @@ const ScreenMainSearch = () => {
   // COMPONENT COMPOSITION
   return (
     /* PAGE CONTAINER */
-    <View style={styles.pageDefault}>
+    <View style={styles.containers.pageTabs}>
 
     {/* SEARCHER SECTION COMPONENT */}
       <SectionSerializerSearcher

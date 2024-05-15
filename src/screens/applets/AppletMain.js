@@ -24,7 +24,7 @@ const AppletMain = () => {
 
   return(
     <Provider store={store}>
-      <View style={styles.pageDefault}>
+      <View style={styles.containers.pageDefault}>
         <HeaderApp/>
         <NavigatorMain/>
       </View>

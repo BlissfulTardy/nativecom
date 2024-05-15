@@ -44,16 +44,16 @@ const ScreenPassword = () => {
     // PAGE COMPOSITION
     return (
         // CONTAINER Page
-        <View style={styles.pageDefault}>
+        <View style={styles.containers.pageDefault}>
 
             {/* LABEL Application */}
-            <Text style={styles.labelHeaderDefault}>NativEcom</Text>
+            <Text style={styles.typography.labelHeaderDefault}>NativEcom</Text>
 
             {/* FORM Reset Password */}
-            <Text style={styles.labelTitleDefault}>Forgot Your Password?</Text>
-            <Text style={styles.labelSectionDefault}>Enter your email address below to reset your password.</Text>
+            <Text style={styles.typography.labelTitleDefault}>Forgot Your Password?</Text>
+            <Text style={styles.typography.labelSectionDefault}>Enter your email address below to reset your password.</Text>
             <TextInput
-                style={styles.input}
+                style={styles.input /* TODO: find or implement */ }
                 placeholder="Email"
                 value={email}
                 onChangeText={setEmail}
@@ -65,15 +65,15 @@ const ScreenPassword = () => {
 
             {/* LINK Login */}
             <Pressable onPress={() => navigation.navigate('ScreenLogin')}>
-                <Text style={styles.link}>Already have an account? Login</Text>
+                <Text style={styles.link /* TODO: find or implement */ }>Already have an account? Login</Text>
             </Pressable>
-            <Text style={''}>if you already belong</Text>
+            <Text style={'' /* TODO: find or implement */ }>if you already belong</Text>
 
             {/* LINK Registration */}
             <Pressable onPress={() => navigation.navigate('ScreenRegister')}>
-                <Text style={styles.link}>Register here and now</Text>
+                <Text style={styles.link /* TODO: find or implement */ }>Register here and now</Text>
             </Pressable>
-            <Text style={''}>if you're new here</Text>
+            <Text style={'' /* TODO: find or implement */ }>if you're new here</Text>
 
         </View>
     );

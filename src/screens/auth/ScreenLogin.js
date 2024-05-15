@@ -46,21 +46,21 @@ const ScreenLogin = () => {
     // PAGE COMPOSITION
     return (
         /* CONTAINER Page */
-        <View style={styles.pageDefault}>
+        <View style={styles.containers.pageDefault}>
 
             {/* LABEL Application */}
-            <Text style={styles.labelHeaderDefault}>NativEcom</Text>
+            <Text style={styles.typography.labelHeaderDefault}>NativEcom</Text>
 
             {/* TEXT Welcome Message */}
-            <Text style={styles.labelTitleDefault}>Welcome, User!</Text>
+            <Text style={styles.typography.labelTitleDefault}>Welcome, User!</Text>
 
             {/* FORM Login */}
-            <View style={styles.container}>
+            <View style={styles.containers.containerDefault}>
                 <TextInput
                     placeholder="Email"
                     value={email}
                     onChangeText={setEmail}
-                    style={styles.input}
+                    style={styles.input /* TODO: find or implement */ }
                     keyboardType="email-address"
                     autoCapitalize="none"
                 />
@@ -68,7 +68,7 @@ const ScreenLogin = () => {
                     placeholder="Password"
                     value={password}
                     onChangeText={setPassword}
-                    style={styles.input}
+                    style={styles.input /* TODO: find or implement */ }
                     secureTextEntry
                 />
                 <Button title="Login" onPress={handleLogin} />
@@ -76,15 +76,15 @@ const ScreenLogin = () => {
 
             {/* LINK Reset Password */}
             <Pressable onPress={() => navigation.navigate('ScreenPassword')}>
-                <Text style={styles.link}>Forgot your password?</Text>
+                <Text style={styles.link /* TODO: find or implement */ }>Forgot your password?</Text>
             </Pressable>
-            <Text style={''}>if you forgot it</Text>
+            <Text style={'' /* TODO: find or implement */ }>if you forgot it</Text>
 
             {/* LINK Registration */}
             <Pressable onPress={() => navigation.navigate('ScreenRegister')}>
-                <Text style={styles.link}>Register here and now</Text>
+                <Text style={styles.link /* TODO: find or implement */ }>Register here and now</Text>
             </Pressable>
-            <Text style={''}>if you're new here</Text>
+            <Text style={'' /* TODO: find or implement */ }>if you're new here</Text>
 
         </View>
     );

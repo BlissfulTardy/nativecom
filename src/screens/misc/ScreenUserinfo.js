@@ -17,7 +17,7 @@ const ScreenUserinfo = () => {
     return (
 
         // PAGE CONTAINER
-        <View style={styles.pageDefault}>
+        <View style={styles.containers.pageDefault}>
 
             <Text>TODO: implement this screen</Text>
             

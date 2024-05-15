@@ -41,7 +41,10 @@ const ScreenMainHome = () => {
   return (
 
     /* SCROLL VIEW */
-    <ScrollView>
+    <ScrollView
+    style={styles.containers.pageTabs}
+    showsVerticalScrollIndicator={false}
+    >
       
       {/* POPULAR ITEMS SLIDER SECTION */}
       <SectionSerializerLabeled

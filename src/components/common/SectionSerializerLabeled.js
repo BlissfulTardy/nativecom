@@ -18,17 +18,17 @@ import styles from '../../../styles';
 const SectionSerializerLabeled = ({ title, data, containerStyle, renderItem, keyExtractor, horizontal = true, showsScrollIndicator = false, numColumns = 1 }) => {
   return (
     /* SECTION CONTAINER */
-    <View style={styles.sectionDefault}>
+    <View>
       
       {/* SECTION TITLE */}
       { title &&
         (
-          <Text style={styles.labelSectionDefault}>{title}</Text>
+          <Text style={styles.typography.labelSectionDefault}>{title}</Text>
         )
       }
 
       {/* SLIDER CONTAINER */}
-      <View style={styles[containerStyle]}>
+      <View style={styles.containers[containerStyle]}>
         <FlatList
           horizontal={horizontal}
           data={data}

@@ -32,10 +32,10 @@ const TabsMain = () => {
     return (
 
         /* PAGE */
-        <View style={styles.pageTabs}>
+        <View>
 
           {/* TAB NAVIGATION COMPOSITION */}
-          <NavigationContainer>
+          <NavigationContainer style={styles.containers.pageTabs}>
 
             {/* TAB NAVIGATOR */}
             <Tab.Navigator

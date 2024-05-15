@@ -11,8 +11,8 @@ import styles from '../../../styles';
  */
 const HeaderApp = () => {
   return (
-    <View style={styles.headerDefault}>
-        <Text style={styles.labelHeaderDefault}>NativEcom</Text>
+    <View style={styles.containers.headerDefault}>
+        <Text style={styles.typography.labelHeaderDefault}>NativEcom</Text>
     </View>
   )
 }

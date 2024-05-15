@@ -45,24 +45,24 @@ const ScreenRegister = () => {
     // PAGE COMPOSITION
     return (
         /* CONTAINER Page */
-        <View style={styles.pageDefault}>
+        <View style={styles.containers.pageDefault}>
 
             {/* LABEL Application */}
-            <Text style={styles.labelHeaderDefault}>NativEcom</Text>
+            <Text style={styles.typography.labelHeaderDefault}>NativEcom</Text>
 
             {/* TEXT Welcome */}
-            <Text style={styles.labelTitleDefault}>Welcome Abroad!</Text>
+            <Text style={styles.typography.labelTitleDefault}>Welcome Abroad!</Text>
 
             {/* FORM Registration */}
-            <View style={styles.container}>
+            <View style={styles.containers.containerDefault /* TODO: find or implement */ }>
                 <TextInput
-                    style={styles.input}
+                    style={styles.input /* TODO: find or implement */ }
                     placeholder="Email"
                     value={email}
                     onChangeText={setEmail}
                 />
                 <TextInput
-                    style={styles.input}
+                    style={styles.input /* TODO: find or implement */ }
                     placeholder="Password"
                     secureTextEntry
                     value={password}
@@ -76,15 +76,15 @@ const ScreenRegister = () => {
 
             {/* LINK Reset Password */}
             <Pressable onPress={() => navigation.navigate('ScreenPassword')}>
-                <Text style={styles.link}>Forgot your password?</Text>
+                <Text style={styles.link /* TODO: find or implement */ }>Forgot your password?</Text>
             </Pressable>
             <Text style={''}>if you forgot it</Text>
             
             {/* LINK Login */}
             <Pressable onPress={() => navigation.navigate('ScreenLogin')}>
-                <Text style={styles.link}>Already have an account? Login</Text>
+                <Text style={styles.link /* TODO: find or implement */ }>Already have an account? Login</Text>
             </Pressable>
-            <Text style={''}>if you already belong</Text>
+            <Text style={'' /* TODO: find or implement */ }>if you already belong</Text>
 
         </View>
     );

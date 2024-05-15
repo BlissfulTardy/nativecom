@@ -6,12 +6,13 @@ import { View, Text, ScrollView, Pressable, StyleSheet } from 'react-native';
 
 // IMPORT STYLES
 import styles from '../../../styles';
+import { screenMainCartFoot } from './../../../styles';
 
 // IMPORT API
 import { fakeFetchProducts } from '../../api/fakeFetcher';
 
 // IMPORT COMPONENTS
-import CardCartProduct from '../../components/CardCartProduct';
+import CardCartProduct from '../../components/CardProduct';
 import SectionSerializerLabeled from '../../components/common/SectionSerializerLabeled';
 
 // SCREEN COMPONENT
@@ -63,11 +64,11 @@ const ScreenMainCart = ({ navigation }) => {
   return (
 
     /* PAGE COMPONENT */
-    <View style={{flex: 1}}>
+    <View style={styles.containers.pageTabs}>
 
       {/* FIXED PAGE TITLE */}
-      <View style={styles.containerTitleDefault}>
-        <Text style={styles.labelTitleDefault}>
+      <View style={styles.containers.containerSectionDefault}>
+        <Text style={styles.typography.labelSectionDefault}>
           Your Cart
         </Text>
       </View>
@@ -84,24 +85,24 @@ const ScreenMainCart = ({ navigation }) => {
       </ScrollView>
 
       {/* FIXED TOTAL PRICE & ACTIONS SECTION*/}
-      <View style={styles.containerBottomScreenMainCart}>
+      <View style={screenMainCartFoot.containerBottomScreenMainCart}>
 
         {/* DISPLAY TOTAL PRICE */}
         <View>
-          <Text style={styles.priceContaineBottomScreenMainCart}>
+          <Text style={screenMainCartFoot.priceContaineBottomScreenMainCart}>
             Total Price: ${totalPrice.toFixed(2)}
           </Text>
         </View>
 
         {/* GAP ELEMENT */}
-        <View style={styles.gapVertical10} />
+        <View style={styles.spatial.gapVertical10} />
 
         {/* DISPLAY BUTTONS */}
-        <View style={styles.buttonsContainerBottomScreenMainCart}>
-          <Pressable onPress={handleClearCart} style={styles.buttonClearCart}>
+        <View style={screenMainCartFoot.buttonsContainerBottomScreenMainCart}>
+          <Pressable onPress={handleClearCart} style={styles.clickables.buttonClearCart}>
             <Text style={styles.buttonText}>Clear Cart</Text>
           </Pressable>
-          <Pressable onPress={handleCheckout} style={styles.buttonCheckoutCart}>
+          <Pressable onPress={handleCheckout} style={styles.clickables.buttonCheckoutCart}>
             <Text style={styles.buttonText}>Checkout</Text>
           </Pressable>
         </View>
@@ -109,7 +110,7 @@ const ScreenMainCart = ({ navigation }) => {
       </View>
 
       {/* GAP ELEMENT */}
-      <View style={styles.gapVertical10} />
+      <View style={styles.spatial.gapVertical10} />
 
     </View>
   );

@@ -13,24 +13,29 @@ const ScreenMainProfile = () => {
   const navigation = useNavigation();
 
   return (
-    <View style={styles.pageCentered}>
-      <Text style={styles.labelLoggedUser}>Logged in as: example@example.com</Text>
+    <View style={
+      [
+        styles.containers.pageTabs,
+        styles.containers.pageCentered,
+      ]
+    }>
+      <Text style={styles.typography.labelLoggedUser}>Logged in as: example@example.com</Text>
 
-      <View style={styles.menuProfile}>
-        <Pressable onPress={() => navigation.navigate('ScreenUserinfo')} style={styles.itemMenuProfile}>
-          <Text style={styles.textItemMenuProfile}>User Information</Text>
+      <View style={styles.procedurals.menuProfile}>
+        <Pressable onPress={() => navigation.navigate('ScreenUserinfo')} style={styles.procedurals.itemMenuProfile}>
+          <Text style={styles.procedurals.textItemMenuProfile}>User Information</Text>
         </Pressable>
 
-        <Pressable onPress={() => navigation.navigate('ScreenDeliveryAddresses')} style={styles.itemMenuProfile}>
-          <Text style={styles.textItemMenuProfile}>Delivery Address</Text>
+        <Pressable onPress={() => navigation.navigate('ScreenDeliveryAddresses')} style={styles.procedurals.itemMenuProfile}>
+          <Text style={styles.procedurals.textItemMenuProfile}>Delivery Address</Text>
         </Pressable>
 
-        <Pressable onPress={() => navigation.navigate('ScreenPaymentMethods')} style={styles.itemMenuProfile}>
-          <Text style={styles.textItemMenuProfile}>Payment Methods</Text>
+        <Pressable onPress={() => navigation.navigate('ScreenPaymentMethods')} style={styles.procedurals.itemMenuProfile}>
+          <Text style={styles.procedurals.textItemMenuProfile}>Payment Methods</Text>
         </Pressable>
 
-        <Pressable onPress={() => navigation.navigate('ScreenReceipts')} style={styles.itemMenuProfile}>
-          <Text style={styles.textItemMenuProfile}>Receipts</Text>
+        <Pressable onPress={() => navigation.navigate('ScreenReceipts')} style={styles.procedurals.itemMenuProfile}>
+          <Text style={styles.procedurals.textItemMenuProfile}>Receipts</Text>
         </Pressable>
       </View>
     </View>
