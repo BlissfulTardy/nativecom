@@ -1,3 +1,6 @@
+
+/* TODO! COMMENTING OUT FOR NOW DUE UNRESOLVED DEPENDENCY ISSUE
+
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
@@ -25,3 +28,33 @@ const analytics = getAnalytics(app);
 
 // Initialize Authentication
 export const auth = getAuth(app);
+
+*/
+
+/**
+ * TODO REPLACE VANILLA PLACEHOLER IMPLEMENTATION WHEN ACTUAL
+ * FIREBASE APP AND AUTH INTEGRATIONS HAVE THEIR ISSUE RESOLVED
+ */
+export const auth = {
+  signInWithEmailAndPassword: async (email, password) => {
+    if (email === "test@example.com" && password === "password") {
+      return Promise.resolve("User signed in");
+    } else {
+      return Promise.reject(new Error("Invalid email or password"));
+    }
+  },
+  createUserWithEmailAndPassword: async (email, password) => {
+    if (email && password) {
+      return Promise.resolve("User registered");
+    } else {
+      return Promise.reject(new Error("Invalid email or password"));
+    }
+  },
+  sendPasswordResetEmail: async (email) => {
+    if (email === "test@example.com") {
+      return Promise.resolve("Password reset email sent");
+    } else {
+      return Promise.reject(new Error("Email not found"));
+    }
+  }
+};

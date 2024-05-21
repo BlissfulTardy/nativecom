@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "908344328086",
+    "project_id": "nativecom-bd890",
+    "storage_bucket": "nativecom-bd890.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:908344328086:android:af70a9fa12541a7ae1a7b7",
+        "android_client_info": {
+          "package_name": "com.blissfultardy.nativecom"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZYVg7nsmaga7xqi8nZJ7kr-S-5SoZ2J0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
