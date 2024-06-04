@@ -7,7 +7,6 @@ buildscript {
         compileSdkVersion = Integer.parseInt(findProperty('android.compileSdkVersion') ?: '34')
         targetSdkVersion = Integer.parseInt(findProperty('android.targetSdkVersion') ?: '34')
         kotlinVersion = findProperty('android.kotlinVersion') ?: '1.8.10'
-
         ndkVersion = "25.1.8937393"
     }
     repositories {
@@ -17,15 +16,11 @@ buildscript {
     dependencies {
         classpath('com.android.tools.build:gradle:7.3.0')
         classpath('com.facebook.react:react-native-gradle-plugin')
+        classpath('com.google.gms:google-services:4.3.3')
     }
 }
 
-// Adding Google Services Gradle Plugin for Firebase SDK integration
-plugins {
-  // Add the dependency for the Google services Gradle plugin
-  id("com.google.gms.google-services") version "4.4.1" apply false
-}
-
+// Apply the com.google.gms.google-services plugin for Firebase SDK integration
 apply plugin: "com.facebook.react.rootproject"
 
 allprojects {
